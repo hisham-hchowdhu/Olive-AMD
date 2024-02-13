@@ -2,6 +2,8 @@
 
 This sample shows how to optimize [Control Net](https://huggingface.co/lllyasviel/sd-controlnet-openpose) with [Stable Diffusion v1-5](https://huggingface.co/runwayml/stable-diffusion-v1-5) to run with ONNX Runtime and DirectML.
 
+Heavily used the scripts from  https://github.com/huggingface/diffusers/blob/main/examples/community/stable_diffusion_controlnet_img2img.py and https://github.com/Amblyopius/Stable-Diffusion-ONNX-FP16, and modified to adapt for Olive environment
+
 Control Net comprises multiple PyTorch models tied together into a *pipeline*. This Olive sample will convert each PyTorch model to float16 and ONNX, and then run the converted ONNX models through the `OrtTransformersOptimization` pass. The transformer optimization pass performs several time-consuming graph transformations that make the models more efficient for inference at runtime. Output models are only guaranteed to be compatible with onnxruntime-directml 1.16.0 or newer.
 
 **Contents**:
